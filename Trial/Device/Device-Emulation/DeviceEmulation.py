@@ -1,6 +1,6 @@
 # /usr/bin/env python 
 
-from Device import import *
+from Device import *
 
 
 
