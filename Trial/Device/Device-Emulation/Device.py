@@ -1,12 +1,16 @@
 # /usr/bin/env python 
 
 class Device(object):
-    def __init__(self, devId):
-        self._devId = devId
+    def __init__(self, deviveId, deviveName):
+        self._deviveId = deviveId
+        self._deviveName = deviveName
     
     # Get the device id, it's only
-    def GetDevId(self):
-        return self._dev_id
+    def GetDeviceId(self):
+        return self._deviveId
+    
+    def GetDeviveName(self):
+        return self._deviceName;
     
     # Capture Data from sensor
     def CaptureData(self, captureData):
