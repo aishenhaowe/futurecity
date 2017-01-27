@@ -1,6 +1,4 @@
 # Future City
-=================================
-
 [![Build Status](https://travis-ci.org/aishenhaowe/futurecity.png)](https://travis-ci.org/aishenhaowe/futurecity)
 
 We want to create a e2e(endpoint to endpoint) solution about IOT. A server, a lot of endpoints(devices), and app are needed for us.
