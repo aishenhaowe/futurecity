@@ -34,3 +34,6 @@
 
 # Python Files
 *.pyc
+
+# Scons
+*.sconsign.*
