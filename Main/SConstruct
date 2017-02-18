@@ -14,27 +14,32 @@ from EnvUtils import *
 # List of build target
 #==========================================================================================
 target_io_server = {
-    'name'                      : 'io_server',
+    'name'                      : 'io-server',
+    'dir'                       : 'io_server',
     'build_type'                : BuildType.SERVER,
 }
 
 target_data_mng = {
-    'name'                      : 'data_mng',
+    'name'                      : 'data-mng',
+    'dir'                       : 'data_mng',
     'build_type'                : BuildType.SERVER,
 }
 
 target_busi_model = {
-    'name'                      : 'busi_model',
+    'name'                      : 'busi-model',
+    'dir'                       : 'busi_model',
     'build_type'                : BuildType.SERVER,
 }
 
 target_app_int = {
-    'name'                      : 'app_int',
+    'name'                      : 'app-int',
+    'dir'                       : 'app_int',
     'build_type'                : BuildType.SERVER,
 }
 
 target_dev_fw = {
-    'name'                      : 'dev_fw',
+    'name'                      : 'dev-fw',
+    'dir'                       : 'dev_fw',
     'build_type'                : BuildType.ARM,
 }
 

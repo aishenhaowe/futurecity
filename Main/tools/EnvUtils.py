@@ -41,6 +41,10 @@ class FcEnv:
         return FcEnv.target_name
         
     @staticmethod
+    def GetBuildDir():
+        return FcEnv.build_dir
+        
+    @staticmethod
     def GetBuildDefines():
         return FcEnv.build_defines
         
@@ -50,5 +54,6 @@ class FcEnv:
         FcEnv.SetBuildType(info['build_type'])
         #FcEnv.build_defines = info['defines']
         FcEnv.target_name = info['name']
+        FcEnv.build_dir = info['dir']
         
         
