@@ -10,11 +10,11 @@ from EnvUtils import *
 sources = []
 
 if FcEnv.GetBuildType() == BuildType.SERVER:
-    sources += Glob(os.path.join(FcEnv.GetTargetName(), 'src', '*.cc'))
-    sources += Glob(os.path.join(FcEnv.GetTargetName(), '*.cc'))
+    sources += Glob(os.path.join(FcEnv.GetBuildDir(), 'src', '*.cc'))
+    sources += Glob(os.path.join(FcEnv.GetBuildDir(), '*.cc'))
     
     cpp_paths = []
-    cpp_paths = os.path.join(FcEnv.GetTargetName(), 'inc')
+    cpp_paths = os.path.join(FcEnv.GetBuildDir(), 'inc')
     env.Append(CPPPATH = cpp_paths)
     
     env.Program(FcEnv.GetTargetName(), sources)
