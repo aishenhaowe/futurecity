@@ -1,1 +1,72 @@
+#==========================================================================================
+# @brief        Scons make file
+# Copyright  (c) 2017 FC LIMITED
+#==========================================================================================
 
+import os
+import sys
+
+sys.path.append(os.path.join('.', 'tools'))
+
+from EnvUtils import *
+
+#==========================================================================================
+# List of build target
+#==========================================================================================
+target_io_server = {
+    'name'                      : 'io-server',
+    'build_type'                : BuildType.SERVER,
+}
+
+target_data_mng = {
+    'name'                      : 'data-mng',
+    'build_type'                : BuildType.SERVER,
+}
+
+target_busi_model = {
+    'name'                      : 'busi-model',
+    'build_type'                : BuildType.SERVER,
+}
+
+target_app_int = {
+    'name'                      : 'app-int',
+    'build_type'                : BuildType.SERVER,
+}
+
+target_dev_fw = {
+    'name'                      : 'dev-fw',
+    'build_type'                : BuildType.ARM,
+}
+
+configs = {
+    'io-server'             : target_io_server,
+    'data-mng'              : target_data_mng,
+    'busi-model'            : target_busi_model,
+    'app-int'               : target_app_int,
+    'dev-fw'                : target_dev_fw,
+}
+
+#==========================================================================================
+# Functions definitions
+#==========================================================================================
+def build(config, arguments):
+    FcEnv.SetBuildInfo(config)
+
+    #env = Environment(
+    #    tools = ['gcc', 'g++', 'gas', 'ar'],
+    #    tools_path = os.path.join('#', 'tools', 'Scons'))
+    env = Environment()
+        
+    SConscript(os.path.join('.', 'src', 'SConscript'), {'env' : env}, variant_dir='build_scons', duplicate=0)
+
+#==========================================================================================
+# Main process
+#==========================================================================================
+for target in ARGUMENTS.get('target', 'io-server').split(','):
+    if configs.has_key(target):
+        print "Building %s"%target
+        build(configs[target], ARGUMENTS)
+    else:
+        print "There's no target with name=%s, Now we have as follow:"%target
+        for t in configs.keys():
+            print t

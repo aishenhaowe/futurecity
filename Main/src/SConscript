@@ -1,1 +1,33 @@
-i
+#==========================================================================================
+# @brief        Scons make file
+# Copyright  (c) 2017 FC LIMITED
+#==========================================================================================
+Import('env')
+import os
+
+from EnvUtils import *
+
+sources = []
+
+if FcEnv.GetBuildType() == BuildType.SERVER:
+    sources += Glob(os.path.join(FcEnv.GetTargetName(), 'src', '*.cc'))
+    sources += Glob(os.path.join(FcEnv.GetTargetName(), '*.cc'))
+    
+    cpp_paths = []
+    cpp_paths = os.path.join(FcEnv.GetTargetName(), 'inc')
+    env.Append(CPPPATH = cpp_paths)
+    
+    env.Program(FcEnv.GetTargetName(), sources)
+    
+elif FcEnv.GetBuildType() == BuildType.ARM:
+    pass
+elif FcEnv.GetBuildType() == BuildType.LINT:
+    pass
+elif FcEnv.GetBuildType() == BuildType.CXXTEST:
+    pass
+elif FcEnv.GetBuildType() == BuildType.DOXYGEN:
+    pass
+elif FcEnv.GetBuildType() == BuildType.ROBOT_TEST:
+    pass
+else:
+    print 'Unknow Build Type'
