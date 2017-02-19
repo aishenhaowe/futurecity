@@ -79,7 +79,7 @@ public:
     int Init();                                                                 /* 初始化                       */
     int Start();                                                                /* 启动                         */
     void PushCacheMsg(IOBox *box);                                              /* 缓存起来，马上送走           */
-    void ExtendPendingMsgs(const deque<IOBox*> *msgQueue);                      /* 扩展的挂起消息               */
+    void ExtendPendingMsgs(const deque<IOBox*> &msgQueue);                      /* 扩展的挂起消息               */
 
     void Notify();                                                              /* 通知，这样EPOLL可以直接返回  */
     

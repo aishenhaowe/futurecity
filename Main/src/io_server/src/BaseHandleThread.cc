@@ -268,7 +268,7 @@ void BaseHandleThread::PushCacheMsg(IOBox *box)
 /*****************************************************************************
  函 数 名  : BaseHandleThread.ExtendPendingMsgs
  功能描述  : 扩展的挂起消息
- 输入参数  : const deque<IOBox*> *msgQueue  
+ 输入参数  : const deque<IOBox*> &msgQueue  
  输出参数  : 无
  返 回 值  : void
  调用函数  : 
@@ -280,7 +280,7 @@ void BaseHandleThread::PushCacheMsg(IOBox *box)
     修改内容   : 新生成函数
 
 *****************************************************************************/
-void BaseHandleThread::ExtendPendingMsgs(const deque<IOBox*> *msgQueue)
+void BaseHandleThread::ExtendPendingMsgs(const deque<IOBox*> &msgQueue)
 {
     pthread_mutex_lock(&this->m_mutexPendingMsgs);
 
@@ -346,7 +346,7 @@ void BaseHandleThread::Notify()
 *****************************************************************************/
 int BaseHandleThread::createListener(const string &host, int port, int backLog)
 {
-    int listener = socket(AF_INET, SOCKET_STREAM, 0);
+    int listener = socket(AF_INET, SOCK_STREAM, 0);
     if (listener < 0)
     {
         
@@ -361,7 +361,7 @@ int BaseHandleThread::createListener(const string &host, int port, int backLog)
     myaddr.sin_port = htons((unsigned short)port);
     myaddr.sin_addr.s_addr = inet_addr(host.c_str());
 
-    if (bind(listener, (struct sockaddr*)&myaddrm sizeof(struct sockaddr)) < 0)
+    if (bind(listener, (struct sockaddr*)&myaddr, sizeof(struct sockaddr)) < 0)
     {
         close(listener);
         
@@ -382,7 +382,7 @@ int BaseHandleThread::createListener(const string &host, int port, int backLog)
  功能描述  : 工作者线程代理
  输入参数  : void *args  
  输出参数  : 无
- 返 回 值  : static
+ 返 回 值  : void
  调用函数  : 
  被调函数  : 
  
@@ -392,7 +392,7 @@ int BaseHandleThread::createListener(const string &host, int port, int backLog)
     修改内容   : 新生成函数
 
 *****************************************************************************/
-static void *BaseHandleThread::threadWorkerProxy(void *args)
+void *BaseHandleThread::threadWorkerProxy(void *args)
 {
     BaseHandleThread *thread = (BaseHandleThread *)args;
 
@@ -526,7 +526,7 @@ int BaseHandleThread::createNotifyFd()
 *****************************************************************************/
 int BaseHandleThread::setNonBlocking(int sockFd)
 {
-    if (fcntl(sockFd, F_SETFL, fcntl(sockFd, F_GETFD, 0) | O_NOBLOCK) == -1)
+    //if (fcntl(sockFd, F_SETFL, fcntl(sockFd, F_GETFD, 0) | O_NOBLOCK) == -1)
     {
         return -1;
     }
