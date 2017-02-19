@@ -22,8 +22,8 @@
  *----------------------------------------------*/
 #include "OuterHandleThread.h"
 
-OuterHandleThread::OuterHandleThread(Server *server) : 
-    BaseHandleThread(server)
+OuterHandleThread::OuterHandleThread(Server *server, const string &host, short port, int backLog) : 
+    BaseHandleThread(server, host, port, backLog)
 {
     
 }

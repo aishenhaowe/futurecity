@@ -34,7 +34,7 @@ class Server;
 class InnerHandleThread : public BaseHandleThread
 {
 public:
-    InnerHandleThread(Server *server);
+    InnerHandleThread(Server *server, const string &host, short port, int backLog);
     ~InnerHandleThread();
     
 public:

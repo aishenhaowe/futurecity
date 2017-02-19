@@ -35,7 +35,7 @@ class Server;
 class OuterHandleThread : public BaseHandleThread
 {
 public:
-    OuterHandleThread(Server *server);
+    OuterHandleThread(Server *server, const string &host, short port, int backLog);
     ~OuterHandleThread();
     
 public:

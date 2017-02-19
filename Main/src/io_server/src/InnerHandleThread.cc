@@ -24,8 +24,8 @@
 #include "BaseHandleThread.h"
 
 
-InnerHandleThread::InnerHandleThread(Server *server):
-    BaseHandleThread(server)
+InnerHandleThread::InnerHandleThread(Server *server, const string &host, short port, int backLog):
+    BaseHandleThread(server, host, port, backLog)
 {
 
 }
