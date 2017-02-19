@@ -54,6 +54,7 @@
 #include <deque>
 
 #include "IOBox.h"
+#include "IOServerDefines.h"
 
 
 using namespace std;

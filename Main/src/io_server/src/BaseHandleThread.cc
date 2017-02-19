@@ -190,7 +190,7 @@ struct timeval & BaseHandleThread::GetNowTime()
 int BaseHandleThread::Init()
 {
     /* 创建并启动监听 */
-    int listener = this->CreateListener(m_host, m_port, m_backLog);
+    int listener = this->createListener(m_host, m_port, m_backLog);
     if (listener < 0)
     {
         return -1;
@@ -246,7 +246,7 @@ int BaseHandleThread::Start()
 }
 
 /*****************************************************************************
- 函 数 名  : BaseHandleThread.pushCacheMsg
+ 函 数 名  : BaseHandleThread.PushCacheMsg
  功能描述  : 缓存起来，马上送走
  输入参数  : IOBox *box  
  输出参数  : 无
@@ -260,7 +260,7 @@ int BaseHandleThread::Start()
     修改内容   : 新生成函数
 
 *****************************************************************************/
-void BaseHandleThread::pushCacheMsg(IOBox *box)
+void BaseHandleThread::PushCacheMsg(IOBox *box)
 {
     this->m_cacheMsgs.push_back(box);
 }
