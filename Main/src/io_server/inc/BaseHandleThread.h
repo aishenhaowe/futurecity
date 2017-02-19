@@ -99,7 +99,7 @@ protected:
     int setNonBlocking(int sockFd);                                             /* 设置非阻塞掉调用             */
     int reuseAddr(int sockFd);
 
-    void calcNowTime();
+    void calcNowTime();                                                         /* 计算当前时间                 */
     
 protected:
     deque<IOBox*>   m_cacheMsgs;                                                /* 加锁                         */

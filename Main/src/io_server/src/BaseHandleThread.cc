@@ -541,3 +541,23 @@ int BaseHandleThread::reuseAddr(int sockFd)
     return setsockopt(sockFd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
 }
 
+/*****************************************************************************
+ 函 数 名  : BaseHandleThread.calcNowTime
+ 功能描述  : 计算当前时间
+ 输入参数  : 无
+ 输出参数  : 无
+ 返 回 值  : void
+ 调用函数  : 
+ 被调函数  : 
+ 
+ 修改历史      :
+  1.日    期   : 2017年2月19日
+    作    者   : ChenZhen
+    修改内容   : 新生成函数
+
+*****************************************************************************/
+void BaseHandleThread::calcNowTime()
+{
+    gettimeofday(&this->m_nowTime, NULL);
+}
+
