@@ -439,7 +439,7 @@ int BaseHandleThread::createEpoll()
 void BaseHandleThread::epollWorker()
 {
     struct epoll_event ev;
-    ev.events = EPOLLIN | EPOLLET | EPOLLUP | EPOLLERR;
+    ev.events = EPOLLIN | EPOLLET | EPOLLHUP | EPOLLERR;
     ev.data.ptr = NULL;
 
     if (epoll_ctl(this->m_epollFd, EPOLL_CTL_ADD, this->m_listener, &ev) < 0)
