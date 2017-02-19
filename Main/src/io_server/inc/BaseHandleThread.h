@@ -25,13 +25,27 @@
  *----------------------------------------------*/
 using namespace std;
 
+class Server;
 
 /*----------------------------------------------*
  * ÀàÉùÃ÷                                       *
  *----------------------------------------------*/
 class BaseHandleThread
 {
-
+public:
+    BaseHandleThread(Server *server);
+    ~BaseHandleThread();
+    
+public:
+    
+protected:
+    
+protected:
+    
+private:
+    
+private:
+    Server      *m_server;
 };
 
 

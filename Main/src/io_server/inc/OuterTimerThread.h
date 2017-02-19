@@ -23,9 +23,25 @@
 /*----------------------------------------------*
  * 包含头文件                                   *
  *----------------------------------------------*/
+
+class Server;
+
 class OuterTimerThread
 {
-
+public:
+    OuterTimerThread(Server *server);
+    ~OuterTimerThread();
+    
+public:
+    
+protected:
+    
+protected:
+    
+private:
+    
+private:
+    Server      *m_server;
 };
 
 

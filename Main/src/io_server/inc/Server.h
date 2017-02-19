@@ -37,19 +37,11 @@ class Server
 {
 /* Public Methods */
 public:
-    /* 构造函数 */
     Server();
-    
-    /* 析构函数 */
     virtual ~Server();
 
-    /* 获取Tag */
     int GetTag();
-
-    /* 初始化 */
     int Init(string configPath);
-
-    /* 启动服务器 */
     int Run();
 
 /* Public Members */

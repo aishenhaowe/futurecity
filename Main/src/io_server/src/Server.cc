@@ -125,9 +125,14 @@ int Server::Init(string configPath)
 *****************************************************************************/
 int Server::Run()
 {
+    /* ÏÈÆô¶¯Handle */
+    this->m_OuterHandleThread = new OuterHandleThread(this);
+    this->m_InnerHandleThread = new InnerHandleThread(this);
+    this->m_OuterTimerThread  = new OuterTimerThread(this);
+    
     while(1)
     {
-        //sleep(1);
+        sleep(1);
     }
     
     return 0;

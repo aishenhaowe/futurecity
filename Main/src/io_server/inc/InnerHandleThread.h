@@ -23,15 +23,30 @@
 /*----------------------------------------------*
  * 包含头文件                                   *
  *----------------------------------------------*/
+#include "BaseHandleThread.h"
 using namespace std;
 
+class Server;
 
 /*----------------------------------------------*
  * 类声明                                       *
  *----------------------------------------------*/
-class InnerHandleThread
+class InnerHandleThread : public BaseHandleThread
 {
-
+public:
+    InnerHandleThread(Server *server);
+    ~InnerHandleThread();
+    
+public:
+    
+protected:
+    
+protected:
+    
+private:
+    
+private:
+    Server      *m_server;
 };
 
 
