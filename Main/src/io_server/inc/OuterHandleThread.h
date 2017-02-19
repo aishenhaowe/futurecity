@@ -23,14 +23,31 @@
 /*----------------------------------------------*
  * 包含头文件                                   *
  *----------------------------------------------*/
+#include "BaseHandleThread.h"
 
+using namespace std;
+
+class Server;
 
 /*----------------------------------------------*
  * 类声明                                       *
  *----------------------------------------------*/
-class OuterHandleThread
+class OuterHandleThread : public BaseHandleThread
 {
-
+public:
+    OuterHandleThread(Server *server, const string &host, short port, int backLog);
+    ~OuterHandleThread();
+    
+public:
+    
+protected:
+    
+protected:
+    
+private:
+    
+private:
+    Server      *m_server;
 };
 
 

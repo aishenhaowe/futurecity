@@ -21,7 +21,10 @@
  * 包含头文件                                   *
  *----------------------------------------------*/
 #include <iostream>
+#include <unistd.h>
+
 #include "Server.h"
+
 
 /*****************************************************************************
  函 数 名  : Server.Server
@@ -125,6 +128,11 @@ int Server::Init(string configPath)
 *****************************************************************************/
 int Server::Run()
 {
+    /* 先启动Handle */
+    //this->m_OuterHandleThread = new OuterHandleThread(this);
+    //this->m_InnerHandleThread = new InnerHandleThread(this);
+    //this->m_OuterTimerThread  = new OuterTimerThread(this);
+    
     while(1)
     {
         //sleep(1);

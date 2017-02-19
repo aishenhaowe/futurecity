@@ -17,7 +17,7 @@ if FcEnv.GetBuildType() == BuildType.SERVER:
     cpp_paths = os.path.join(FcEnv.GetBuildDir(), 'inc')
     env.Append(CPPPATH = cpp_paths)
     
-    env.Program(FcEnv.GetTargetName(), sources)
+    env.Program(FcEnv.GetTargetName(), sources, LIBS=['pthread'])
     
 elif FcEnv.GetBuildType() == BuildType.ARM:
     pass
