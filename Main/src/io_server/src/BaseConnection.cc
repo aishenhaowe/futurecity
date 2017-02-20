@@ -21,7 +21,16 @@
  * 包含头文件                                   *
  *----------------------------------------------*/
 #include <stdlib.h>
+#include <string.h>
 #include <stdint.h>
+#include <errno.h>
+#include <memory>
+#include <sys/epoll.h>
+#include <fcntl.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+
 #include "BaseConnection.h"
 
 
@@ -247,7 +256,7 @@ void BaseConnection::OnEvent(const struct epoll_event & event)
 
     if (event.events & (EPOLLERR | EPOLLHUP))
     {
-        close();
+        this->Close();
     }
 }
 
@@ -353,7 +362,7 @@ int BaseConnection::ReadMessage()
     if (socket_need_close)
     {
         /* 关闭 */
-        close();
+        this->Close();
     }
 
     return 0;
@@ -456,7 +465,7 @@ void BaseConnection::Close()
 
     /* 从epoll清空 */
     epoll_ctl(this->m_epollFd, EPOLL_CTL_DEL, this->m_clientFd, NULL);
-    ::close(this->m_clientFd);
+    close(this->m_clientFd);
 
     this->m_clientFd = -1;
 }

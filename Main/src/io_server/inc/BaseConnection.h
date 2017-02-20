@@ -25,6 +25,7 @@
  *----------------------------------------------*/
 #include <iostream>
 #include <arpa/inet.h>
+#include "IBox.h"
 
 using namespace std;
 
@@ -67,9 +68,9 @@ protected:
     int ReadMessage();
     int SendMessage();
 
-    virtual void onMessage(const char buf, size_t size){}
-    virtual void onCreate();
-    virtual void onClose();
+    virtual void onMessage(const char* buf, size_t size){}
+    virtual void onCreate(){}
+    virtual void onClose(){}
     virtual IBox* getCheckerBox() = 0;
     virtual void onPushMessage(const string& buf){}
 
