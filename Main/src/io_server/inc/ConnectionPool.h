@@ -20,16 +20,13 @@
 #define __CONNECTIONPOOL_H__
 
 
-#ifdef __cplusplus
-#if __cplusplus
-extern "C"{
-#endif
-#endif /* __cplusplus */
-
-
 /*----------------------------------------------*
  * 包含头文件                                   *
  *----------------------------------------------*/
+#include <iostream>
+#include <deque>
+#include <set>
+
 using namespace std;
 
 /*----------------------------------------------*
@@ -59,13 +56,6 @@ private:
     deque<DataType*> m_aliveObjs;
     deque<DataType*> m_deadObjs;
 };
-
-
-#ifdef __cplusplus
-#if __cplusplus
-}
-#endif
-#endif /* __cplusplus */
 
 
 #endif /* __CONNECTIONPOOL_H__ */
