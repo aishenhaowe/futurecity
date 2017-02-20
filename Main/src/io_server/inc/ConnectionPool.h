@@ -37,16 +37,73 @@ template<class DataType>
 class ConnectionPool
 {
 public:
-    ConnectionPool(int maxSize);
-    virtual ~ConnectionPool();
+    ConnectionPool(int maxSize)
+    {
+        this->m_maxSize         = maxSize;
+        this->m_aliveCount      = 0;
+        this->m_deadCount       = 0;
+    }
+    
+    virtual ~ConnectionPool()
+    {
 
-    DataType* Alloc();                                                          /* 分配节点                     */
-    void Recycle(DataType *obj);                                                /* 回收指定的节点               */
-    int GetCount();                                                             /* 获取所有节点的总个数         */
-    int GetAliveCount();                                                        /* 获取活动节点的总个数         */
-    int GetDeadCount();                                                         /* 获取非活动节点的总个数       */
-    int GetMaxSize();                                                           /* 获取连接池尺寸               */
-    set<DataType*>& GetAliveObjs();                                             /* 获取活动节点队列             */
+    }
+
+    DataType* Alloc()                                                           /* 分配节点                     */
+    {
+        DataType *obj = NULL;
+        if (this->m_deadCount > 0)
+        {
+            obj = this->m_deadObjs.front();
+            this->m_deadObjs.pop_front();
+            this->m_deadCount--;
+        }
+        else
+        {
+            /* 判断是否超限 */
+            if (this->m_maxSize >= 0 && this->GetCount() >= this->m_maxSize)
+            {
+                return NULL;
+            }
+
+            obj = new DataType();
+        }
+
+        this->m_aliveObjs.insert(obj);
+        this->m_aliveCount++;
+
+        return obj;
+    }
+    
+    void Recycle(DataType *obj)                                                 /* 回收指定的节点               */
+    {
+        obj->release();
+        this->m_aliveObjs.erase(obj);
+        this->m_aliveCount--;
+        this->m_deadObjs.push_back(obj);
+        this->m_deadCount++;
+    }
+    int GetCount()                                                              /* 获取所有节点的总个数         */
+    {
+        return this->m_aliveCount + this->m_deadCount;
+    }
+    int GetAliveCount()                                                         /* 获取活动节点的总个数         */
+    {
+        return this->m_aliveCount;
+    }
+    int GetDeadCount()                                                          /* 获取非活动节点的总个数       */
+    {
+        return this->m_deadCount;
+    }
+    
+    int GetMaxSize()                                                            /* 获取连接池尺寸               */
+    {
+        return this->m_maxSize;
+    }
+    set<DataType*>& GetAliveObjs()                                              /* 获取活动节点队列             */
+    {
+        return m_aliveObjs;
+    }
     
 private:
     int m_maxSize;
