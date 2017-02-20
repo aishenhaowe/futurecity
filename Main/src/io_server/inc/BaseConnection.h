@@ -70,7 +70,7 @@ protected:
     virtual void onMessage(const char buf, size_t size){}
     virtual void onCreate();
     virtual void onClose();
-    virtual netkit::IBox* getCheckerBox() = 0;
+    virtual IBox* getCheckerBox() = 0;
     virtual void onPushMessage(const string& buf){}
 
     static long long newSn();
