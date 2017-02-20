@@ -22,8 +22,6 @@
  *----------------------------------------------*/
 #include "ConnectionPool.h"
 
-template<class DataType>
-
 
 /*****************************************************************************
  函 数 名  : ConnectionPool.ConnectionPool
@@ -40,6 +38,7 @@ template<class DataType>
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 ConnectionPool<DataType>::ConnectionPool(int maxSize)
 {
     this->m_maxSize         = maxSize;
@@ -62,6 +61,7 @@ ConnectionPool<DataType>::ConnectionPool(int maxSize)
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 ConnectionPool<DataType>::~ConnectionPool()
 {
 
@@ -82,6 +82,7 @@ ConnectionPool<DataType>::~ConnectionPool()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 void ConnectionPool<DataType>::Alloc()
 {
     DataType *obj = NULL;
@@ -123,6 +124,7 @@ void ConnectionPool<DataType>::Alloc()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 void ConnectionPool<DataType>::Recycle(DataType *obj)
 {
     obj->release();
@@ -147,6 +149,7 @@ void ConnectionPool<DataType>::Recycle(DataType *obj)
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 int ConnectionPool<DataType>::GetCount()
 {
     return this->m_aliveCount + this->m_deadCount;
@@ -167,6 +170,7 @@ int ConnectionPool<DataType>::GetCount()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 int ConnectionPool<DataType>::GetAliveCount()
 {
     return this->m_aliveCount;
@@ -187,6 +191,7 @@ int ConnectionPool<DataType>::GetAliveCount()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 int ConnectionPool<DataType>::GetDeadCount()
 {
     return this->m_deadCount;
@@ -207,6 +212,7 @@ int ConnectionPool<DataType>::GetDeadCount()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 int ConnectionPool<DataType>::GetMaxSize()
 {
     return this->m_maxSize;
@@ -227,6 +233,7 @@ int ConnectionPool<DataType>::GetMaxSize()
     修改内容   : 新生成函数
 
 *****************************************************************************/
+template<class DataType>
 set<DataType*>& ConnectionPool<DataType>::GetAliveObjs()
 {
     return m_aliveObjs;
