@@ -203,6 +203,7 @@ int BaseHandleThread::Init()
     {
         return -2;
     }
+    this->m_notifyFd = notifyFd;
 
     /* ´´½¨EPOLL FD */
     this->m_epollFd = this->createEpoll();
