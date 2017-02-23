@@ -21,6 +21,7 @@
  * 包含头文件                                   *
  *----------------------------------------------*/
 #include "BaseHandleThread.h"
+#include "ILog.h"
 
 
 /*****************************************************************************
@@ -193,6 +194,7 @@ int BaseHandleThread::Init()
     int listener = this->createListener(m_host, m_port, m_backLog);
     if (listener < 0)
     {
+        ERROR_LOG("createListener fail with listener_fd=%d\n", listener);
         return -1;
     }
     m_listener = listener;
